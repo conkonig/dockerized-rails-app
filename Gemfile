@@ -61,6 +61,9 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem 'omniauth', '~> 1.8.1'
+gem 'omniauth-auth0', '~> 2.0.0'
+
 group :test , :development do
   gem 'guard', '~>2.14.2',require:false
   gem 'rb-fsevent'
