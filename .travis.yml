@@ -13,5 +13,6 @@ before_install:
   - gem update --system
   - echo "BEFORE INSTALL END"
 script:
-  - bin/rake db:test:prepare
-  - bin/rake
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rspec spec/
