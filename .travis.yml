@@ -1,0 +1,18 @@
+language: ruby
+cache: bundler
+rvm:
+  - 2.5.1
+services:
+  - postgresql
+before_script:
+  - cp config/database.travis.yml config/database.yml
+  - psql -c 'create database auth0app_test;' -U postgres
+before_install:
+  - echo "BEFORE INSTALL START"
+  - gem install bundler -v "$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)"
+  - gem update --system
+  - echo "BEFORE INSTALL END"
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rake
