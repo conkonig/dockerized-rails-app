@@ -1,11 +1,10 @@
 language: ruby
-cache: bundler
+cache: bundle
 rvm:
   - 2.5.0
 services:
   - postgresql
 before_script:
-  - gem install bundler
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database auth0app_test;' -U postgres
 script:
