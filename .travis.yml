@@ -1,5 +1,5 @@
 language: ruby
-cache: bundle
+cache: bundler
 rvm:
   - 2.5.0
 services:
@@ -9,7 +9,7 @@ before_script:
   - psql -c 'create database auth0app_test;' -U postgres
 before_install:
   - echo "BEFORE INSTALL START"
-  - gem install bundler
+  - gem install bundler -v '1.16.3'
   - echo "BEFORE INSTALL END"
 script:
   - bin/rake db:migrate RAILS_ENV=test
